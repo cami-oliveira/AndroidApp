@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/order_service_list_tab"
+        android:enabled="true"
+        android:title="Test 1"/>
+
+    <item
+        android:id="@+id/settings_tab2"
+        android:enabled="true"
+        android:title="Test 2"/>
+</menu>

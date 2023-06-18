@@ -39,10 +39,13 @@ public class MainActivity extends AppCompatActivity {
         String usernameData = String.valueOf(username.equals(DataModel.getInstance().userDetails.getUsername()));
         String passwordData = String.valueOf(password.equals(DataModel.getInstance().userDetails.getPassword()));
 
-        if (username.equals(DataModel.getInstance().userDetails.getUsername()) &&
+        Intent intent = new Intent(MainActivity.this, MainTabActivity.class);
+        startActivity(intent);
+
+        /*if (username.equals(DataModel.getInstance().userDetails.getUsername()) &&
                 password.equals(DataModel.getInstance().userDetails.getPassword())) {
 
-            Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+            Intent intent = new Intent(MainActivity.this,MainTabActivity.class);
             startActivity(intent);
 
         } else {
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             builder.create().show();
-        }
+        }*/
 
     }
 }

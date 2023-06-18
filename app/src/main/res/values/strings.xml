@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">AtividadeSomativa2</string>
+    <string name="login">THE FIX</string>
+    <string name="username">Nome</string>
+    <string name="password">Senha</string>
+    <string name="button">ENTRAR</string>
+    <string name="image">Image</string>
+    <string name="error">Error</string>
+    <string name="wrong_user">User or Password does not match!</string>
+    <string name="errorMessage">Campo inválido</string>
+    <string name="toast_coloque_nome_e_senha">Por favor, coloque seu nome e senha.</string>
+
 </resources>

@@ -9,7 +9,6 @@
     <string name="wrong_user">Usuário ou senha incorretos!</string>
     <string name="errorMessage">Campo inválido</string>
     <string name="toast_coloque_nome_e_senha">Por favor, coloque seu nome e senha.</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="order_service_list_title">Ordens de Servico</string>
     <string name="settings_title">Settings</string>
 

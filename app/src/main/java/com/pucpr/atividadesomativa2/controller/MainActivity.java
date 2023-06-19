@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ImageView imageView = findViewById(R.id.imageView);
+
+        DataModel.getInstance().createDataBase(getApplicationContext());
     }
 
     public void loginButtonOnClick(View v) {

@@ -1,5 +1,6 @@
 package com.pucpr.atividadesomativa2.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pucpr.atividadesomativa2.R;
+import com.pucpr.atividadesomativa2.controller.HomeActivity;
+import com.pucpr.atividadesomativa2.controller.NewOrderService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +21,7 @@ import com.pucpr.atividadesomativa2.R;
  */
 public class OrderServiceListFragment extends Fragment {
 
+    private FloatingActionButton fab;
     public OrderServiceListFragment() {
         // Required empty public constructor
     }
@@ -39,6 +44,17 @@ public class OrderServiceListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_service_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_service_list, container, false);
+
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), NewOrderService.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 }

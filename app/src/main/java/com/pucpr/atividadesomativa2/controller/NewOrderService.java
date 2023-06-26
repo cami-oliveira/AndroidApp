@@ -7,10 +7,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.pucpr.atividadesomativa2.R;
@@ -18,7 +21,7 @@ import com.pucpr.atividadesomativa2.model.Constants;
 import com.pucpr.atividadesomativa2.model.DataModel;
 import com.pucpr.atividadesomativa2.model.OrderService;
 
-public class NewOrderService extends AppCompatActivity {
+public class NewOrderService extends BaseActivity {
 
     private TextInputEditText clientText, phoneText, detailText, deviceText;
 
@@ -47,6 +50,8 @@ public class NewOrderService extends AppCompatActivity {
                 detailText.getText().toString()));
 
         Log.d("ADD ITEM", DataModel.getInstance().getOrderServices().toString());
+
+        hideKeyboard();
 
         finish();
     }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText usernameEditText = findViewById(R.id.usernameEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
-        String username = usernameEditText.getText().toString().toLowerCase();
+        String username = usernameEditText.getText().toString().toLowerCase().trim();
         String password = passwordEditText.getText().toString();
         String usernameData = String.valueOf(username.equals(DataModel.getInstance().userDetails.getUsername()));
         String passwordData = String.valueOf(password.equals(DataModel.getInstance().userDetails.getPassword()));

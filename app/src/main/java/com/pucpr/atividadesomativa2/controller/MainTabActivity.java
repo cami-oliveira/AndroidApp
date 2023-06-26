@@ -31,6 +31,7 @@ public class MainTabActivity extends AppCompatActivity implements NavigationBarV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        count = false;
         int itemId = item.getItemId();
         if (itemId == R.id.order_service_list_tab) {
             Fragment listFragment = OrderServiceListFragment.newInstance(false);
@@ -48,5 +49,22 @@ public class MainTabActivity extends AppCompatActivity implements NavigationBarV
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    Boolean count = false;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if (!count) {
+            Fragment listFragment = OrderServiceListFragment.newInstance(false);
+            openFragment(listFragment);
+            navigationView.setSelectedItemId(R.id.order_service_list_tab);
+            count = true;
+        } else {
+            finish();
+        }
+
+
     }
 }

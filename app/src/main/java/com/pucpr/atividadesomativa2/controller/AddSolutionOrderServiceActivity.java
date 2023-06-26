@@ -14,7 +14,7 @@ import com.pucpr.atividadesomativa2.model.Constants;
 import com.pucpr.atividadesomativa2.model.DataModel;
 import com.pucpr.atividadesomativa2.model.OrderService;
 
-public class AddSolutionOrderServiceActivity extends AppCompatActivity {
+public class AddSolutionOrderServiceActivity extends BaseActivity {
 
     private TextInputEditText solutionTextField;
     private Button solutionButton;
@@ -49,6 +49,7 @@ public class AddSolutionOrderServiceActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainTabActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        hideKeyboard();
     }
 
     public boolean validateFields() {

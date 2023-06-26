@@ -36,6 +36,10 @@ public class NewOrderService extends AppCompatActivity {
 
     public void createOrderServiceOnClick(View v) {
 
+        if (!this.validateFields()) {
+            return;
+        }
+
         DataModel.getInstance().addOrderService(
                 new OrderService(this.clientText.getText().toString(),
                 this.phoneText.getText().toString(),
@@ -45,5 +49,43 @@ public class NewOrderService extends AppCompatActivity {
         Log.d("ADD ITEM", DataModel.getInstance().getOrderServices().toString());
 
         finish();
+    }
+
+    public boolean validateFields() {
+
+        boolean isValid = true;
+        if ((clientText.getText().toString().trim().equals(""))) {
+            clientText.setError(getString(R.string.errorMessage));
+            clientText.setText(null);
+            isValid = false;
+        } else {
+            clientText.setError(null);
+        }
+
+        if ((phoneText.getText().toString().trim().equals(""))) {
+            phoneText.setError(getString(R.string.errorMessage));
+            phoneText.setText(null);
+            isValid = false;
+        } else {
+            phoneText.setError(null);
+        }
+
+        if ((deviceText.getText().toString().trim().equals(""))) {
+            deviceText.setError(getString(R.string.errorMessage));
+            deviceText.setText(null);
+            isValid = false;
+        } else {
+            deviceText.setError(null);
+        }
+
+        if ((detailText.getText().toString().trim().equals(""))) {
+            detailText.setError(getString(R.string.errorMessage));
+            detailText.setText(null);
+            isValid = false;
+        } else {
+            detailText.setError(null);
+        }
+
+        return isValid;
     }
 }

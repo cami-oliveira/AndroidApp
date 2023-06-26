@@ -33,6 +33,11 @@ public class AddSolutionOrderServiceActivity extends AppCompatActivity {
         solutionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (!validateFields()) {
+                    return;
+                }
+
                 orderService.setSolution(solutionTextField.getText().toString());
                 DataModel.getInstance().finishOrder(orderService);
                 openTabBar();
@@ -44,5 +49,19 @@ public class AddSolutionOrderServiceActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainTabActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    public boolean validateFields() {
+
+        boolean isValid = true;
+        if ((solutionTextField.getText().toString().trim().equals(""))) {
+            solutionTextField.setError(getString(R.string.errorMessage));
+            solutionTextField.setText(null);
+            isValid = false;
+        } else {
+            solutionTextField.setError(null);
+        }
+
+        return isValid;
     }
 }

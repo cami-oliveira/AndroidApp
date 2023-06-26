@@ -38,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
         EditText usernameEditText = findViewById(R.id.usernameEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
-        String username = usernameEditText.getText().toString();
+        String username = usernameEditText.getText().toString().toLowerCase();
         String password = passwordEditText.getText().toString();
         String usernameData = String.valueOf(username.equals(DataModel.getInstance().userDetails.getUsername()));
         String passwordData = String.valueOf(password.equals(DataModel.getInstance().userDetails.getPassword()));
 
-        if (username.equals(DataModel.getInstance().userDetails.getUsername()) &&
+        if (username.equals(DataModel.getInstance().userDetails.getUsername().toLowerCase()) &&
                 password.equals(DataModel.getInstance().userDetails.getPassword())) {
 
             Intent intent = new Intent(MainActivity.this,MainTabActivity.class);

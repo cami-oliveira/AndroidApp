@@ -11,5 +11,21 @@
     <string name="toast_coloque_nome_e_senha">Por favor, coloque seu nome e senha.</string>
     <string name="order_service_list_title">Ordens de Servico</string>
     <string name="settings_title">Settings</string>
+    <string name="abertas">Abertas</string>
+    <string name="fechadas">Fechadas</string>
+    <string name="nova_ordem_de_servi_o">Nova ordem de serviço</string>
+    <string name="cliente">Cliente</string>
+    <string name="telefone">Telefone</string>
+    <string name="device">Device</string>
+    <string name="detalhes">Detalhes</string>
+    <string name="criar">Criar</string>
+    <string name="ordem_de_serevi_o_id_123">Ordem de sereviço - id: 123</string>
+    <string name="client">Client</string>
+    <string name="details">Details</string>
+    <string name="aberto_em">Aberto em</string>
+    <string name="concluido_em">Concluido em</string>
+    <string name="solu_o">Solução</string>
+    <string name="solucionar">Solucionar</string>
+    <string name="deletar">Deletar</string>
 
 </resources>

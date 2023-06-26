@@ -10,10 +10,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
 import com.pucpr.atividadesomativa2.R;
 import com.pucpr.atividadesomativa2.fragments.OrderServiceListFragment;
-import com.pucpr.atividadesomativa2.fragments.SettingsFragment;
 
 public class MainTabActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
 

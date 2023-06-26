@@ -4,11 +4,11 @@
         android:id="@+id/order_service_list_tab"
         android:enabled="true"
         android:icon="@drawable/ic_list"
-        android:title="Abertas"/>
+        android:title="@string/abertas"/>
 
     <item
         android:id="@+id/settings_tab2"
         android:enabled="true"
         android:icon="@drawable/ic_close_items"
-        android:title="Fechadas"/>
+        android:title="@string/fechadas"/>
 </menu>

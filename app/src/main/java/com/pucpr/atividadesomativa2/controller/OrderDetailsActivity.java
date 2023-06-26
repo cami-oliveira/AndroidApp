@@ -1,5 +1,9 @@
 package com.pucpr.atividadesomativa2.controller;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -11,9 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.pucpr.atividadesomativa2.R;
+import com.pucpr.atividadesomativa2.model.Constants;
 import com.pucpr.atividadesomativa2.model.DataModel;
 import com.pucpr.atividadesomativa2.model.OrderService;
 
+import java.io.Serializable;
 import java.util.Date;
 
 public class OrderDetailsActivity extends AppCompatActivity {
@@ -43,14 +49,14 @@ public class OrderDetailsActivity extends AppCompatActivity {
         this.solutionButton = findViewById(R.id.orderDetailsSolutionButton);
         this.deleteButton = findViewById(R.id.orderDetailsDeleteButton);
 
-        this.orderService = (OrderService) getIntent().getSerializableExtra("ORDER_SERVICE");
+        this.orderService = (OrderService) getIntent().getSerializableExtra(Constants.ORDER_SERVICE);
 
         this.fillComponents();
     }
 
     private void fillComponents() {
 
-        this.titleLabel.setText("Ordem se serviço: " + this.orderService.getId());
+        this.titleLabel.setText("Ordem de serviço: " + this.orderService.getId());
         this.textViewClient.setText(this.orderService.getClient());
         this.textViewDevice.setText(this.orderService.getDevice());
         this.textViewDetails.setText(this.orderService.getDetail());
@@ -92,6 +98,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         this.solutionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                finish();
                 openAddSolutionActivity();
             }
         });
@@ -112,7 +119,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
 
     private void openAddSolutionActivity() {
         Intent intent = new Intent(this, AddSolutionOrderServiceActivity.class);
-        intent.putExtra("ORDER_SERVICE", this.orderService);
+        intent.putExtra(Constants.ORDER_SERVICE, this.orderService);
+
         startActivity(intent);
     }
 }

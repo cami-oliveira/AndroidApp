@@ -21,6 +21,7 @@ import com.pucpr.atividadesomativa2.controller.MainTabActivity;
 import com.pucpr.atividadesomativa2.controller.NewOrderService;
 import com.pucpr.atividadesomativa2.controller.OrderDetailsActivity;
 import com.pucpr.atividadesomativa2.database.OrderServiceDataBase;
+import com.pucpr.atividadesomativa2.model.Constants;
 import com.pucpr.atividadesomativa2.model.DataModel;
 import com.pucpr.atividadesomativa2.model.OrderService;
 
@@ -123,7 +124,7 @@ public class OrderServiceListFragment extends Fragment implements OrderServiceAd
     @Override
     public void didSelectOrder(OrderService orderService) {
         Intent intent = new Intent(getActivity(), OrderDetailsActivity.class);
-        intent.putExtra("ORDER_SERVICE", orderService);
+        intent.putExtra(Constants.ORDER_SERVICE, orderService);
         startActivity(intent);
     }
 }

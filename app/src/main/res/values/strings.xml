@@ -27,5 +27,7 @@
     <string name="solu_o">Solução</string>
     <string name="solucionar">Solucionar</string>
     <string name="deletar">Deletar</string>
+    <string name="sem_ordens_de_servi_o_abertas">Sem ordens de serviço abertas</string>
+    <string name="sem_ordens_de_servi_o_fechadas">Sem ordens de serviço fechadas</string>
 
 </resources>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pucpr.atividadesomativa2.R;
@@ -40,6 +41,7 @@ public class OrderServiceListFragment extends Fragment implements OrderServiceAd
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
+    private TextView emptyTitle;
     public OrderServiceListFragment(boolean shouldShowFinishedOrders) {
         this.shouldShowFinishedOrders = shouldShowFinishedOrders;
     }
@@ -85,6 +87,8 @@ public class OrderServiceListFragment extends Fragment implements OrderServiceAd
             });
         }
 
+        emptyTitle = (TextView) view.findViewById(R.id.emptyListText);
+
         return view;
     }
 
@@ -113,6 +117,20 @@ public class OrderServiceListFragment extends Fragment implements OrderServiceAd
     }
 
     public void bindOrderServiceAdapter(){
+        if (this.orderServices.isEmpty()) {
+            if (this.shouldShowFinishedOrders) {
+                this.emptyTitle.setText(R.string.sem_ordens_de_servi_o_fechadas);
+            } else {
+                this.emptyTitle.setText(R.string.sem_ordens_de_servi_o_abertas);
+            }
+
+            this.recyclerView.setVisibility(View.INVISIBLE);
+            this.emptyTitle.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        this.emptyTitle.setVisibility(View.INVISIBLE);
+        this.recyclerView.setVisibility(View.VISIBLE);
         orderServiceAdapter =  new OrderServiceAdapter(this.orderServices);
         orderServiceAdapter.setOrderServiceAdapterInterface(this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false);

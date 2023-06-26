@@ -90,15 +90,71 @@ public class OrderServiceDataBase extends SQLiteOpenHelper {
                 long id = cursor.getLong(cursor.getColumnIndexOrThrow(COL_ID));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow(COL_CLIENT));
                 String phone = cursor.getString(cursor.getColumnIndexOrThrow(COL_PHONE));
+                String device = cursor.getString(cursor.getColumnIndexOrThrow(COL_DEVICE));
+                String detail = cursor.getString(cursor.getColumnIndexOrThrow(COL_DETAIL));
                 long createdAt = cursor.getLong(cursor.getColumnIndexOrThrow(COL_CREATED_DATE));
+                long finishedAt = cursor.getLong(cursor.getColumnIndexOrThrow(COL_FINISHED_DATE));
+                String solution = cursor.getString(cursor.getColumnIndexOrThrow(COL_SOLUTION));
                 orderServices.add(new OrderService(id,
                         name,
                         phone,
-                        null,
-                        null,
-                        null,
+                        device,
+                        detail,
+                        solution,
                         new Date(createdAt),
-                        null,
+                        new Date(finishedAt),
+                        null));
+            }while (cursor.moveToNext());
+        }
+
+
+        database.close();
+        return orderServices;
+    }
+
+    public ArrayList<OrderService> getOrdersServicesFromDB(boolean justUnfinished){
+        SQLiteDatabase database = getReadableDatabase();
+        Cursor cursor;
+        if (justUnfinished) {
+            cursor = database.rawQuery("SELECT * FROM "
+                            +DB_TABLE+
+                            " WHERE "
+                            +COL_FINISHED_DATE+
+                            " IS NULL " +
+                            " AND "
+                            +COL_REMOVED_DATE+
+                            " IS NULL",
+                    null);
+        } else {
+            cursor = database.rawQuery("SELECT * FROM "
+                            +DB_TABLE+
+                            " WHERE "
+                            +COL_FINISHED_DATE+
+                            " IS NOT NULL "+
+                            " AND "
+                            +COL_REMOVED_DATE+
+                            " IS NULL",
+                    null);
+        }
+        ArrayList<OrderService> orderServices = new ArrayList<>();
+        if (cursor.moveToFirst()){
+            do{
+                long id = cursor.getLong(cursor.getColumnIndexOrThrow(COL_ID));
+                String name = cursor.getString(cursor.getColumnIndexOrThrow(COL_CLIENT));
+                String phone = cursor.getString(cursor.getColumnIndexOrThrow(COL_PHONE));
+                String device = cursor.getString(cursor.getColumnIndexOrThrow(COL_DEVICE));
+                String detail = cursor.getString(cursor.getColumnIndexOrThrow(COL_DETAIL));
+                long createdAt = cursor.getLong(cursor.getColumnIndexOrThrow(COL_CREATED_DATE));
+                long finishedAt = cursor.getLong(cursor.getColumnIndexOrThrow(COL_FINISHED_DATE));
+                String solution = cursor.getString(cursor.getColumnIndexOrThrow(COL_SOLUTION));
+                orderServices.add(new OrderService(id,
+                        name,
+                        phone,
+                        device,
+                        detail,
+                        solution,
+                        new Date(createdAt),
+                        new Date(finishedAt),
                         null));
             }while (cursor.moveToNext());
         }
@@ -113,7 +169,7 @@ public class OrderServiceDataBase extends SQLiteOpenHelper {
         values.put(COL_REMOVED_DATE, System.currentTimeMillis());
         String id = String.valueOf(orderService.getId());
         SQLiteDatabase database = getWritableDatabase();
-        int count = database.update(DB_TABLE, values, COL_ID + "?=", new String[]{id});
+        int count = database.update(DB_TABLE, values, COL_ID + " = ?", new String[]{id});
         database.close();
         return count;
     }
@@ -124,7 +180,7 @@ public class OrderServiceDataBase extends SQLiteOpenHelper {
         values.put(COL_FINISHED_DATE, System.currentTimeMillis());
         String id = String.valueOf(orderService.getId());
         SQLiteDatabase database = getWritableDatabase();
-        int count = database.update(DB_TABLE, values, COL_ID + "?=", new String[]{id});
+        int count = database.update(DB_TABLE, values, COL_ID + " = ?", new String[]{id});
         database.close();
         return count;
     }

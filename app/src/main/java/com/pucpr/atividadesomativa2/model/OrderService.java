@@ -1,8 +1,9 @@
 package com.pucpr.atividadesomativa2.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class OrderService {
+public class OrderService implements Serializable {
 
     private long id;
 

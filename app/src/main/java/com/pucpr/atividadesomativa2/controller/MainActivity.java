@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageView);
 
         DataModel.getInstance().createDataBase(getApplicationContext());
+        DataModel.getInstance().findAllOpenedOrderServices();
+        DataModel.getInstance().findAllFinishedOrderServices();
     }
 
     public void loginButtonOnClick(View v) {

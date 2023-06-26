@@ -26,17 +26,20 @@ public class MainTabActivity extends AppCompatActivity implements NavigationBarV
 
         navigationView = (BottomNavigationView) findViewById(R.id.navigationView);
         navigationView.setOnItemSelectedListener(this);
+
+        Fragment listFragment = OrderServiceListFragment.newInstance(false);
+        openFragment(listFragment);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.order_service_list_tab) {
-            Fragment musicasFragment = OrderServiceListFragment.newInstance();
-            openFragment(musicasFragment);
+            Fragment listFragment = OrderServiceListFragment.newInstance(false);
+            openFragment(listFragment);
         } else if (itemId == R.id.settings_tab2) {
-            Fragment albunsFragment = SettingsFragment.newInstance();
-            openFragment(albunsFragment);
+            Fragment listFinishedFragment = OrderServiceListFragment.newInstance(true);
+            openFragment(listFinishedFragment);
         }
 
         return true;

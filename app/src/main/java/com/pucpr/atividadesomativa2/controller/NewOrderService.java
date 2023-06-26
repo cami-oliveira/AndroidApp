@@ -2,6 +2,7 @@ package com.pucpr.atividadesomativa2.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,5 +27,8 @@ public class NewOrderService extends AppCompatActivity {
                 "nao liga"));
 
         Log.d("test", DataModel.getInstance().getOrderServices().toString());
+
+        Intent intent = new Intent(this, MainTabActivity.class);
+        startActivity(intent);
     }
 }
